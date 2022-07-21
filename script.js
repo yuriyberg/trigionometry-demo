@@ -89,13 +89,13 @@ class Radian {
 
 	static draw(context) {
 		context.beginPath();
+		context.lineWidth=3;
+		context.lineCap='round';
 		context.arc(this.x,this.y,this.rad,0,this.angle,false);
-		context.lineWidth=2;
 		context.stroke();
-		context.closePath();
+		context.lineWidth=1;
 	}
 }
-
 
 (function draw() {
 	window.requestAnimationFrame(draw);
