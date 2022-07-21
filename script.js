@@ -81,6 +81,21 @@ class Leg {
 	}
 }
 
+class Radian {
+	static x=0;
+	static y=0;
+	static rad=0;
+	static angle=0;
+
+	static draw(context) {
+		context.beginPath();
+		context.arc(this.x,this.y,this.rad,0,this.angle,false);
+		context.lineWidth=2;
+		context.stroke();
+		context.closePath();
+	}
+}
+
 
 (function draw() {
 	window.requestAnimationFrame(draw);
@@ -97,6 +112,12 @@ class Leg {
 	const angle = CONFIG.angle*Math.PI/180;
 	const sin = Math.sin(angle) * MainCircle.rad;
 	const cos = Math.cos(angle) * MainCircle.rad;
+
+	Radian.x=canvas.width/2;
+	Radian.y=canvas.height/2;
+	Radian.rad=MainCircle.rad;
+	Radian.angle=angle;
+	Radian.draw(context);
 
 	Hypot.x=canvas.width/2;
 	Hypot.y=canvas.height/2;
@@ -121,7 +142,6 @@ class Leg {
 	Dot.x=canvas.width/2 + cos;
 	Dot.y=canvas.height/2 + sin;
 	Dot.draw(context);
-
 
 	CONFIG.angle+=0.1;
 
